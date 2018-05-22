@@ -1,0 +1,131 @@
+<tool id="clustering" name="Heirarchical Clustering" version="0.1.0">
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+	# set id = $inputFile.dataset_id
+	cp $inputFile input$id.csv &&
+    	Rscript --vanilla 
+	# if str($kmeans_m.kmeans_method) == "kmeans":
+		$__tool_directory__/kmeans_v3.R 
+		-f input$id.csv -d '$kmeans_m.metric' -a '$kmeans_m.algorithm' -m '$kmeans_m.method' -k '$kmeans_m.clusters' -i '$kmeans_m.numIter' -c '$clusterFile' -g '$graphFile'
+	# elif str($kmeans_m.kmeans_method) == "hkmeans":
+		$__tool_directory__/hkmeans.R
+		-f input$id.csv -d '$kmeans_m.metric' -a '$kmeans_m.algorithm' -m '$kmeans_m.method' -k '$kmeans_m.clusters' -i '$kmeans_m.numIter' -c '$clusterFile' -g '$graphFile'
+	# end if	
+
+	
+    ]]></command>
+    <inputs>
+	<param name="inputFile" type="data" format="csv" label="Encoded Data [x]"/>
+ 	<conditional name="kmeans_m"> 
+		<param name="kmeans_method" type="select" label="Clustering Method">
+			<option value="kmeans" selected="true">KMeans </option>
+			<option value="hkmeans">Hybrid KMeans</option>
+			<option value="hcut">Heirarchical Clustering and Cut the trees</option>
+		</param>
+	 	<when value="kmeans"> 
+
+			<param name="metric" type="select" label="Distance Metric [hc.metric]">
+				<option value="euclidean">Euclidean</option>
+				<option value="maximum">Maximum</option>
+				<option value="manhattan">Manhattan</option>
+				<option value="canberra">Canberra</option>
+				<option value="binary">Binary</option>
+				<option value="minkowski">Minkowski</option>
+			</param>
+	
+			<param name="method" type="select" label="Method [hc.metric]">
+				<option value="ward.D">ward.D</option>
+				<option value="ward.D2">ward.D2</option>
+				<option value="single">single</option>
+				<option value="complete">complete</option>
+				<option value="average">average</option>
+				<option value="mcquitty">mcquitty</option>
+				<option value="median">median</option>
+				<option value="centroid">centroid</option>
+			</param>
+			<param name="algorithm" type="select" label="Algorithm [km.algorithm]">
+		                <option value="Hartigan-Wong">Hartigan-Wong</option>
+		                <option value="Lloyd">Lloyd</option>
+		                <option value="Forgy">Forgy</option>
+		                <option value="MacQueen">MacQueen</option>
+			</param>
+			<param name="clusters" type="integer" value="3" label="Number of clusters [k]"/>
+			<param name="numIter" type="integer" value="10" label="Maximum Number of Iterations for kmeans"/>
+		</when>
+		
+	 	<when value="hkmeans"> 
+			<param name="metric" type="select" label="Distance Metric [hc.metric]">
+				<option value="euclidean">Euclidean</option>
+				<option value="maximum">Maximum</option>
+				<option value="manhattan">Manhattan</option>
+				<option value="canberra">Canberra</option>
+				<option value="binary">Binary</option>
+				<option value="minkowski">Minkowski</option>
+			</param>
+	
+			<param name="method" type="select" label="Method [hc.metric]">
+				<option value="ward.D">ward.D</option>
+				<option value="ward.D2">ward.D2</option>
+				<option value="single">single</option>
+				<option value="complete">complete</option>
+				<option value="average">average</option>
+				<option value="mcquitty">mcquitty</option>
+				<option value="median">median</option>
+				<option value="centroid">centroid</option>
+			</param>
+			<param name="algorithm" type="select" label="Algorithm [km.algorithm]">
+		                <option value="Hartigan-Wong">Hartigan-Wong</option>
+		                <option value="Lloyd">Lloyd</option>
+		                <option value="Forgy">Forgy</option>
+		                <option value="MacQueen">MacQueen</option>
+			</param>
+			<param name="clusters" type="integer" value="3" label="Number of clusters [k]"/>
+			<param name="numIter" type="integer" value="10" label="Maximum Number of Iterations for kmeans"/>
+		</when>
+<!--	 	<when value="hcut">
+			<param name="inputFile" type="data" format="csv" label="Encoded Data [x]"/>
+			<param name="metric" type="select" label="Distance Metric [hc.metric]">
+				<option value="euclidean">Euclidean</option>
+				<option value="maximum">Maximum</option>
+				<option value="manhattan">Manhattan</option>
+				<option value="canberra">Canberra</option>
+				<option value="binary">Binary</option>
+				<option value="minkowski">Minkowski</option>
+			</param>
+			<param name="isdiss" type="boolean" label="Matrix is a dissimilarity matrix" truevalue="TRUE" falsevalue="FALSE" checked="false"/>
+			<param name="function" type="select" label="Heirarchical Function to use [hc.func]">
+				<option value="hclust">hclust</option>
+				<option value="diana">diana</option>
+				<option value="agnes">agnes</option>
+			</param>
+			<param name="method" type="select" label="Method [hc.metric]">
+				<option value="ward.D">ward.D</option>
+				<option value="ward.D2">ward.D2</option>
+				<option value="single">single</option>
+				<option value="complete">complete</option>
+				<option value="average">average</option>
+				<option value="mcquitty">mcquitty</option>
+				<option value="median">median</option>
+				<option value="centroid">centroid</option>
+			</param>
+			<param name="algorithm" type="select" label="Algorithm [km.algorithm]">
+		                <option value="Hartigan-Wong">Hartigan-Wong</option>
+		                <option value="Lloyd">Lloyd</option>
+		                <option value="Forgy">Forgy</option>
+		                <option value="MacQueen">MacQueen</option>
+			</param>
+			<param name="stand" type="boolean" checked="true" truevalue="TRUE" falsevalue="FALSE" label="Standardize"/>
+			<param name="graph" type="boolean" checked="true" truevalue="TRUE" falsevalue="FALSE" label="Visualize clusters"/>
+		</when>
+-->		
+	</conditional> 
+    </inputs>
+    <outputs>
+    	<data name="clusterFile" format="tabular" label="Cluster Membership File"/>
+    	<data name="graphFile" format="pdf" label="Cluster Plot" />
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>

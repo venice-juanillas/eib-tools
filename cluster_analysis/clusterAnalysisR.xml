@@ -1,0 +1,54 @@
+<tool id="clusterAnalysisR" name="SVD/PCA/Cluster Analysis for Genotype data" version="0.1.0">
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+	#set id = $inputFile.dataset_id
+    	Rscript --vanilla $__tool_directory__/cluster_analysis.R -f $inputFile -d $dimensions -g $maxgroup -w $htmlFile -m $membership 
+    ]]></command>
+    <inputs>
+	<param name="inputFile" type="data" format="csv,tabular" label="Encoded Genotype Data" help="Use: Encoded tool"/>
+	<param name="dimensions" type="integer" value="10" label="Number of dimensions to plot" help="(integer). Number of dimensions to use in barplot"/>
+	<param name="maxgroup" type="integer" value="5" label="Maximum Number of Groupings" help="(integer). Maxmimum number of groups for clustering"/>
+    </inputs>
+    <outputs>
+	<data name="htmlFile" format="html" label="Cluster Plot from genotype data: ${inputFile.name}"/>
+	<data name="membership" format="tabular" label="Cluster Membership File for ${inputFile.name}"/>
+    </outputs>
+    <help><![CDATA[
+.. class:: infomark
+
+Get Optimum Cluster
+
+-----
+
+**What this tool does**
+
+This tool calculates the possible optimum number of clusters given a genotype matrix.
+
+-----
+
+**Input File:** Encoded Genotype File.
+
+The matrix contains the samples in the columns and the markers in the rows.
+
+======  =====  =====  ======  ======  ======  =======
+Name    S1      S2      S3      S4      S5      S6
+======  =====  =====  ======  ======  ======  =======
+X168    2       2       2       0       2       2
+X174    2       2       2       2       0       2
+X182    2       2       2       2       1       1
+X189    0       2       2       2       0       2
+X230    2       2       2       2       1       2
+X241    2       2       2       2       0       0
+======  =====  =====  ======  ======  ======  =======
+
+-----
+
+**Output File:** PDF file
+
+
+-----
+
+**Author:** Fernando Toledo, Juan Burgueno (CIMMYT)
+    ]]></help>
+</tool>

@@ -1,0 +1,61 @@
+<tool id="get_optimum_cluster" name="Get Optimum Cluster" version="0.1.0">
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+        Rscript --vanilla $__tool_directory__/opt_clust.R -f $inputFile -m $method -k $maxcluster -b $bootstrapSize -g $graphFile
+    ]]></command>
+    <inputs>
+	<param type="data" name="inputFile" format="csv" label="[required]Encoded Genotype Data" help="(csv file) Dataset should be encoded using the Encode tool."/>
+	<param type="select" name="method" label="[required]method for kmeans clustering" help="Method to be used for estimating the optimal number of clusters">
+		<option value="silhouette">Silhouette</option>
+		<option value="gap_stat">Gap Stat</option>
+		<option value="wss">WSS</option>
+	</param>
+	<param type="integer" name="maxcluster" value="2" label="[required] Maximum number of clusters" help="(integer) Maximum number of clusters to consider, must be at least 2 "/>
+	<param type="integer" name="bootstrapSize" value="200" label="number of Monte Carlo (bootstrap) samples" help="(integer) Used for determining the number of clusters using gap statistic."/>
+    </inputs>
+    <outputs>
+	<data name="graphFile" format="pdf" label="Graph: Optimum Cluster from ${inputFile.name}" />
+    </outputs>
+    <help><![CDATA[
+
+.. class:: infomark
+
+Get Optimum Cluster
+
+-----
+
+**What this tool does**
+
+This tool calculates the possible optimum number of clusters given a genotype matrix.
+
+-----
+
+**Input File:** Encoded Genotype File
+
+The matrix contains the samples in the columns and the markers in the rows.
+
+======  =====  =====  ======  ======  ======  =======
+Name	S1	S2	S3	S4	S5	S6
+======  =====  =====  ======  ======  ======  =======
+X168	2	2	2	0	2	2
+X174	2	2	2	2	0	2
+X182	2	2	2	2	1	1
+X189	0	2	2	2	0	2
+X230	2	2	2	2	1	2
+X241	2	2	2	2	0	0
+======  =====  =====  ======  ======  ======  =======
+
+
+-----
+
+**Output File:** PDF file
+
+This file contains a graph of the optimal number of clusters.
+
+-----
+
+**Author:** Umesh Rosyara (CIMMYT)
+
+    ]]></help>
+</tool>

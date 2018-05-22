@@ -1,0 +1,38 @@
+PLINK v1.90p 64-bit (9 Jan 2018)
+Options in effect:
+  --allow-extra-chr
+  --extract /home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.prune.in
+  --out /home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.pruned
+  --recode vcf
+  --vcf /home/galaxy/data/Damaris/database/files/000/dataset_296.dat
+
+Hostname: ip-172-30-0-53
+Working directory: /home/galaxy/data/Damaris/database/jobs_directory/000/215/working
+Start time: Thu Feb  8 06:53:03 2018
+
+Random number seed: 1518072783
+7982 MB RAM detected; reserving 3991 MB for main workspace.
+--vcf:
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.pruned-temporary.bed
++
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.pruned-temporary.bim
++
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.pruned-temporary.fam
+written.
+30985 variants loaded from .bim file.
+264 people (0 males, 0 females, 264 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.pruned.nosex
+.
+--extract: 1058 variants remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 264 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.611528.
+1058 variants and 264 people pass filters and QC.
+Note: No phenotypes present.
+--recode vcf to
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.pruned.vcf
+... done.
+
+End time: Thu Feb  8 06:53:03 2018

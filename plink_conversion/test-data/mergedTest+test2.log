@@ -1,0 +1,36 @@
+PLINK v1.90b5.2 64-bit (9 Jan 2018)
+Options in effect:
+  --bfile test
+  --bmerge test2
+  --keep-allele-order
+  --make-bed
+  --out mergedTest+test2
+
+Hostname: ip-172-30-0-225
+Working directory: /home/galaxy/data/veniceGalaxy/tools/plink
+Start time: Tue Feb  6 13:39:48 2018
+
+Random number seed: 1517924388
+7982 MB RAM detected; reserving 3991 MB for main workspace.
+8 people loaded from test.fam.
+8 people to be merged from test2.fam.
+Of these, 0 are new, while 8 are present in the base dataset.
+172 markers loaded from test.bim.
+558 markers to be merged from test2.bim.
+Of these, 386 are new, while 172 are present in the base dataset.
+Performing single-pass merge (8 people, 558 variants).
+Merged fileset written to mergedTest+test2-merge.bed +
+mergedTest+test2-merge.bim + mergedTest+test2-merge.fam .
+558 variants loaded from .bim file.
+8 people (0 males, 0 females, 8 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to mergedTest+test2.nosex .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 8 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.939068.
+558 variants and 8 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to mergedTest+test2.bed + mergedTest+test2.bim +
+mergedTest+test2.fam ... done.
+
+End time: Tue Feb  6 13:39:48 2018

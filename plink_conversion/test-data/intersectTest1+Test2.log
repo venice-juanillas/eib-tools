@@ -1,0 +1,28 @@
+PLINK v1.90b5.2 64-bit (9 Jan 2018)
+Options in effect:
+  --bfile mergedTest+test2
+  --extract SNPstoExtract.txt
+  --keep-allele-order
+  --make-bed
+  --out intersectTest1+Test2
+
+Hostname: ip-172-30-0-225
+Working directory: /home/galaxy/data/veniceGalaxy/tools/plink
+Start time: Tue Feb  6 13:42:04 2018
+
+Random number seed: 1517924524
+7982 MB RAM detected; reserving 3991 MB for main workspace.
+558 variants loaded from .bim file.
+8 people (0 males, 0 females, 8 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to intersectTest1+Test2.nosex .
+--extract: 36 variants remaining.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 8 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.951389.
+36 variants and 8 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to intersectTest1+Test2.bed + intersectTest1+Test2.bim +
+intersectTest1+Test2.fam ... done.
+
+End time: Tue Feb  6 13:42:04 2018

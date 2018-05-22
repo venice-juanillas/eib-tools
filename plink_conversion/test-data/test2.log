@@ -1,0 +1,28 @@
+PLINK v1.90b5.2 64-bit (9 Jan 2018)
+Options in effect:
+  --keep-allele-order
+  --make-bed
+  --out test2
+  --recode
+  --vcf test2.vcf
+
+Hostname: ip-172-30-0-225
+Working directory: /home/galaxy/data/veniceGalaxy/tools/plink
+Start time: Tue Feb  6 13:39:00 2018
+
+Random number seed: 1517924340
+7982 MB RAM detected; reserving 3991 MB for main workspace.
+--vcf: test2-temporary.bed + test2-temporary.bim + test2-temporary.fam written.
+558 variants loaded from .bim file.
+8 people (0 males, 0 females, 8 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to test2.nosex .
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 8 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.939068.
+558 variants and 8 people pass filters and QC.
+Note: No phenotypes present.
+--make-bed to test2.bed + test2.bim + test2.fam ... done.
+--recode ped to test2.ped + test2.map ... done.
+
+End time: Tue Feb  6 13:39:00 2018

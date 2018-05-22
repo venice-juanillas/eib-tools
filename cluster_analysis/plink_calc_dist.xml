@@ -1,0 +1,27 @@
+<tool id="plink_calc_dist" name="Get Genotype distance matrix" version="0.1.0">
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+	 #set id = $pedFile.dataset_id
+         mkdir -p $__tool_directory__/out$id/ &&
+         cp $pedFile $__tool_directory__/out$id/input.ped &&
+         cp $mapFile $__tool_directory__/out$id/input.map &&
+         plink --file $__tool_directory__/out$id/input --distance square --out $__tool_directory__/out$id/output &&
+	 cp  $__tool_directory__/out$id/output.dist $distance_matrix &&
+	 cp  $__tool_directory__/out$id/output.dist.id $dist_lines_id &&
+         cp  $__tool_directory__/out$id/output.log $dist_log &&
+         rm -rf $__tool_directory__/out$id/
+    ]]></command>
+    <inputs>
+	<param name="pedFile" type="data" format="tabular" label="Genotype file (.ped)" help=".ped file."/>
+	<param name="mapFile" type="data" format="tabular" label="Genotype file (.map)" help=".map file"/>
+    </inputs>
+    <outputs>
+	<data name="distance_matrix" format="tabular" label="Distance Matrix"/>
+        <data name="dist_lines_id" format="tabular" label="Lines id"/>
+        <data name="dist_log" format="text" label="Log File"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>

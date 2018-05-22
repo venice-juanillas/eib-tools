@@ -1,0 +1,19 @@
+PLINK v1.90p 64-bit (9 Jan 2018)
+Options in effect:
+  --allow-extra-chr
+  --out /home/galaxy/data/Damaris/tools/hackathon_problem3/plink_vcf2bed/output
+  --vcf /home/galaxy/data/Damaris/database/files/000/dataset_296.dat
+
+Hostname: ip-172-30-0-53
+Working directory: /home/galaxy/data/Damaris/database/jobs_directory/000/216/working
+Start time: Thu Feb  8 06:53:04 2018
+
+Random number seed: 1518072784
+7982 MB RAM detected; reserving 3991 MB for main workspace.
+--vcf:
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_vcf2bed/output.bed +
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_vcf2bed/output.bim +
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_vcf2bed/output.fam
+written.
+
+End time: Thu Feb  8 06:53:04 2018

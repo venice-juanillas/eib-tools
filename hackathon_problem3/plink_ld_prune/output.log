@@ -1,0 +1,55 @@
+PLINK v1.90p 64-bit (9 Jan 2018)
+Options in effect:
+  --allow-extra-chr
+  --indep-pairwise 500kb 5 0.25
+  --out /home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output
+  --vcf /home/galaxy/data/Damaris/database/files/000/dataset_296.dat
+
+Hostname: ip-172-30-0-53
+Working directory: /home/galaxy/data/Damaris/database/jobs_directory/000/215/working
+Start time: Thu Feb  8 06:53:03 2018
+
+Warning: --indep-pairwise step size should be 1 when window size is in kb
+units.
+Random number seed: 1518072783
+7982 MB RAM detected; reserving 3991 MB for main workspace.
+--vcf:
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output-temporary.bed
++
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output-temporary.bim
++
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output-temporary.fam
+written.
+30985 variants loaded from .bim file.
+264 people (0 males, 0 females, 264 ambiguous) loaded from .fam.
+Ambiguous sex IDs written to
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.nosex
+.
+Using 1 thread (no multithreaded calculations invoked).
+Before main variant filters, 264 founders and 0 nonfounders present.
+Calculating allele frequencies... done.
+Total genotyping rate is 0.675267.
+30985 variants and 264 people pass filters and QC.
+Note: No phenotypes present.
+Pruned 3197 variants from chromosome 1, leaving 104.
+Pruned 2710 variants from chromosome 2, leaving 94.
+Pruned 3836 variants from chromosome 3, leaving 89.
+Pruned 2049 variants from chromosome 4, leaving 110.
+Pruned 1856 variants from chromosome 5, leaving 94.
+Pruned 3197 variants from chromosome 6, leaving 89.
+Pruned 2191 variants from chromosome 7, leaving 86.
+Pruned 2135 variants from chromosome 8, leaving 84.
+Pruned 1263 variants from chromosome 9, leaving 73.
+Pruned 2788 variants from chromosome 10, leaving 58.
+Pruned 3095 variants from chromosome 11, leaving 94.
+Pruned 1602 variants from chromosome 12, leaving 78.
+Pruned 8 variants from chromosome 13, leaving 2.
+Pruned 0 variants from chromosome 14, leaving 3.
+Pruning complete.  29927 of 30985 variants removed.
+Marker lists written to
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.prune.in
+and
+/home/galaxy/data/Damaris/tools/hackathon_problem3/plink_ld_prune/output.prune.out
+.
+
+End time: Thu Feb  8 06:53:03 2018

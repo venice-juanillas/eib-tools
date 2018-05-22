@@ -1,0 +1,16 @@
+<tool id="serialize_matrix" name="Melt square matrix" version="0.1.0">
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+	Rscript --vanilla $__tool_directory__/melt.r -f $matrix > $serialized_matrix
+    ]]></command>
+    <inputs>
+	<param name="matrix" type="data" format="tabular" label="Square matrix to transform"/>	
+    </inputs>
+    <outputs>
+	<data name="serialized_matrix" format="tabular" label="Serialized Matrix"/>
+    </outputs>
+    <help><![CDATA[
+	This tool transforms a square matrix into a 3-column table for heatmap visualization.        
+    ]]></help>
+</tool>

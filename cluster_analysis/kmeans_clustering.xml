@@ -1,0 +1,85 @@
+<tool id="kmeans_clustering" name="Heirarchical K-Means Clustering" version="0.1.0">
+    <requirements>
+    </requirements>
+    <command detect_errors="exit_code"><![CDATA[
+    	Rscript --vanilla $__tool_directory__/kmeans_v3.R -f $inputFile -d $metric -a $algorithm -m $method -k $clusters -i $numIter -c $clusterFile -g $graphFile
+    ]]></command>
+    <inputs>
+	<param name="inputFile" type="data" format="csv" label="Encoded Data [x]" help="(csv file) Dataset should be encoded using the Encode tool."/>
+	<param name="metric" type="select" label="Distance Metric [hc.metric]" help="the distance measure to be used" >
+		<option value="euclidean">Euclidean</option>
+		<option value="maximum">Maximum</option>
+		<option value="manhattan">Manhattan</option>
+		<option value="canberra">Canberra</option>
+		<option value="binary">Binary</option>
+		<option value="minkowski">Minkowski</option>
+	</param>
+	
+	<param name="method" type="select" label="Method [hc.metric]" help="the agglomeration method to be used">
+		<option value="ward.D">ward.D</option>
+		<option value="ward.D2">ward.D2</option>
+		<option value="single">single</option>
+		<option value="complete">complete</option>
+		<option value="average">average</option>
+		<option value="mcquitty">mcquitty</option>
+		<option value="median">median</option>
+		<option value="centroid">centroid</option>
+	</param>
+	<param name="algorithm" type="select" label="Algorithm [km.algorithm]" help="the algorithm to be used for kmeans">
+                <option value="Hartigan-Wong">Hartigan-Wong</option>
+                <option value="Lloyd">Lloyd</option>
+                <option value="Forgy">Forgy</option>
+                <option value="MacQueen">MacQueen</option>
+	</param>
+	 <param name="clusters" type="integer" value="3" label="Number of clusters [k]" help="(integer) the number of clusters to be generated"/>
+	 <param name="numIter" type="integer" value="10" label="Maximum Number of Iterations for kmeans" help="(integer) the maximum number of iterations allowed for k-means"/>
+    </inputs>
+    <outputs>
+    	<data name="clusterFile" format="tabular" label="Cluster Membership File for ${inputFile.name}"/>
+    	<data name="graphFile" format="pdf" label="Cluster Plot for ${inputFile.name}" />
+    </outputs>
+    <help><![CDATA[
+	
+.. class:: infomark
+
+Hierarchical K-means Clustering
+
+-----
+
+**What this tool does**
+
+This tool uses the hybrid approach by combining the hierarchical clustering and the k-means methods.
+
+hkmeans(x, k, hc.metric = "euclidean", hc.method = "ward.D2",iter.max = 10, km.algorithm = "Hartigan-Wong")
+
+-----
+
+**Input File:** Encoded Genotype File
+
+The matrix contains the samples in the columns and the markers in the rows.
+
+=======  ========= ========= ========= ========= =========
+Name      sample1   sample2   sample3   sample4   sample5
+=======  ========= ========= ========= ========= =========
+marker1	     2	       2         0         2         2
+marker2      2         2         0         1         0
+marker3      0	       0         0         2         2
+marker4      0         2         1         1         1
+marker5      1         2         0         0         2
+marker6      2         1         0         1         2
+=======  ========= ========= ========= ========= =========
+
+
+-----
+
+**Output File:** 
+
+
+
+-----
+
+**Author:** Umesh Rosyara (CIMMYT)
+
+    
+    ]]></help>
+</tool>

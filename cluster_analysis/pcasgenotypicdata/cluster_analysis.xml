@@ -1,0 +1,49 @@
+<tool id="cluster_analysis" name="Cluster Analysis" version="0.1.0">
+    <requirements>
+    </requirements>
+    <stdio>
+    <exit_code range="3:5" level="warning" description="Low disk space" />
+    <exit_code range="6:"  level="fatal"   description="Bad input dataset" />
+    <!-- Catching fatal_oom allows the job runner to potentially resubmit to a resource with more
+         memory if Galaxy is configured to do this. -->
+<!--    <exit_code range="2"   level="fatal_oom"   description="Out of Memory" />-->
+</stdio>
+    <command ><![CDATA[
+	#set id = $genoFile.dataset_id
+	mkdir -p $__tool_directory__/out$id/ &&
+        Rscript --vanilla $__tool_directory__/cluster_analysis.r -f $genoFile -a $a -b $b -c $c -g $g -o $outFile -r $__tool_directory__/out$id > $log &&
+	mv $__tool_directory__/out$id/barplot1.pdf $output1 &&
+	mv $__tool_directory__/out$id/barplot2.pdf $output2 &&
+	mv $__tool_directory__/out$id/p.jpg $output3 &&
+	mv $__tool_directory__/out$id/py.jpg $output4 &&
+	mv $__tool_directory__/out$id/pz.jpg $output5 &&
+	mv $__tool_directory__/out$id/BIC.pdf $output6 &&
+	mv $__tool_directory__/out$id/classif.pdf $output7 &&
+	mv $__tool_directory__/out$id/density.pdf $output8 &&
+	mv $__tool_directory__/out$id/uncertainty.pdf $output9 &&
+	rm -rf $__tool_directory__/out$id/
+    ]]></command>
+    <inputs>
+	<param name="genoFile" type="data" format="csv" label="Genotype File"/>
+	<param name="a" size="4" type="integer" value="10" label="Dimensions to plot barplot" />
+	<param name="b" size="4" type="integer" value="5" label="Dimensions to use to plot barplot" />
+	<param name="c" size="4" type="integer" value="3" label="Number of dimensions to plot PCA" />
+	<param name="g" size="4" type="integer" value="15" label="Maximum Number of groupings" />
+    </inputs>
+    <outputs>
+	<data name="outFile" format="tabular" label="SVD scores and loadings"/>
+	<data name="output1" format="pdf" label="Barplot1"/>
+	<data name="output2" format="pdf" label="Barplot2"/>
+	<data name="output3" format="jpg" label="Plot 1: D1 vs D2"/>
+	<data name="output4" format="jpg" label="Plot 2: D2 vs D1"/>
+	<data name="output5" format="jpg" label="Plot 3"/>
+	<data name="output6" format="pdf" label="BIC"/>
+	<data name="output7" format="pdf" label="classification"/>
+	<data name="output8" format="pdf" label="density"/>
+	<data name="output9" format="pdf" label="uncertainty"/>
+	<data name="log" format="txt" label="log"/>
+    </outputs>
+    <help><![CDATA[
+        TODO: Fill in help.
+    ]]></help>
+</tool>
