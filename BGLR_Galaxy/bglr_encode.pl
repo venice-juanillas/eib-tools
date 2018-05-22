@@ -35,7 +35,7 @@ if($dataType eq "dominant"){
 }elsif($dataType eq "iupac"){
 	encodeIUPAC($gFile,$codingScheme,$output);
 	#print "Encoding IUPAC";
-}elsif($dataTYpe eq "twoletter"){
+}elsif($dataType eq "2letter"){
 	encode2letter($gFile,$codingScheme,$output);
 }
 ################## functions ###################
@@ -117,20 +117,48 @@ sub encode2letter{
 	my ($genoFile,$code,$output) = @_;
 	my $linecount = 0;
 	my @row;
+	my ($minHomo, $het, $majorHomo, $missing) = split(',',$code);
 
 	open(IN,'<',$genoFile) or die "Cannot open fil: $genoFile\n";
 	open(OUT,'>',$output);
 	
-	##
+	## 
 	while(my $line = <IN>){
+		#$line =~ s/^\s$//g;
 		chomp $line;
+		@row = split('\t',$line);
 		if($linecount == 0){
-			print OUT $line."\n";
+			print OUT $row[0].",".join(',',@row[11..$#row])."\n";
 		}else{
-			@row = split(',',$line);
-			my ($allele1,$allele2) = split('/',$row[1]);
-			print $allele1."-".$allele2;	
+			if(length($row[1]) == 3){
+				my ($allele1,$allele2) = split('/',$row[1]);
+				print OUT $row[0];
+				for(my $i = 11; $i <= $#row; $i++ ){
+					if($row[$i] eq $allele1.$allele1){
+						$row[$i] = $minHomo;
+					}
+					if($row[$i] eq $allele2.$allele2){
+						$row[$i] = $majorHomo;
+					}
+					if( ($row[$i] eq $allele1.$allele2) or ($row[$i] eq $allele2.$allele1)) {
+						$row[$i] = $het;
+					}
+					if($row[$i] eq "--"){
+						$row[$i] = $missing;
+					}
+					print OUT ",".$row[$i];
+				}
+				print OUT "\n";
+			}elsif(length($row[1]) == 1){
+				print OUT $row[0];
+				for(my $i = 11; $i <= $#row; $i++ ){
+					$row[$i] = $majorHomo;
+					print OUT ",".$row[$i];
+				}
+				print OUT "\n";
+			}
 		}
+		$linecount++;
 	}
 	close(IN);
 	close(OUT);
