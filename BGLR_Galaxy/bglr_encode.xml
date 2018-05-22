@@ -11,6 +11,7 @@
 			<param name ="format" type="select" label="Data type" help="Select whether genotype file is in dominant or IUPAC format." >
 				<option value="dominant"> Dominant Format </option>
 				<option value="iupac"> IUPAC</option>
+				<option value="2letter"> Two letter nucleotide </option>
 			</param>
 			<when value="dominant">		
 				<param name="codeScheme" type="select" label="Select coding scheme to use" help="Coding scheme always follows this format: (minor homozygous, major homozygous)" >
@@ -20,7 +21,13 @@
 			</when>
 			<when value="iupac">
 				<param name="codeScheme" type="select" label="Select coding scheme to use" help="Coding scheme always follows this format: (minor homozygous,heterozygous, major homozygous,missing allele)" >
-					<option value="0,1,2,3"> (0,1,2,3) </option>	
+					<option value="0,1,2,NA"> (0,1,2,NA) </option>	
+				</param>
+			</when>	
+			<when value="2letter">
+				<param name="codeScheme" type="select" label="Select coding scheme to use" help="Coding scheme always follows this format: (minor homozygous,heterozygous, major homozygous,missing allele)" >
+					<option value="0,1,2,NA"> (0,1,2,NA) </option>	
+					<option value="-1,0,1,NA"> (-1,0,1,NA) </option>	
 				</param>
 			</when>
 		</conditional>
